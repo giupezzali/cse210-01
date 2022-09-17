@@ -29,9 +29,7 @@ def main():
         if possible_victories(grid):
             print('Good game. Thanks for playing!')
             break
-        elif is_full(grid):
-            print('Good game. Thanks for playing!')
-            break
+    
         else:
             player1 = int(input("\nx's turn to choose a square (1-9): "))
             print()
@@ -40,16 +38,12 @@ def main():
             if possible_victories(grid):
                 print('Good game. Thanks for playing!')
                 break
-            elif is_full(grid):
-                print('Good game. Thanks for playing!')
-                break
             else:
-                player2 = int(input("\no's turn to choose a square (1-9): \n"))
+                player2 = int(input("\no's turn to choose a square (1-9): "))
                 print()
                 replace_grid(player2, (Fore.CYAN + 'o'))
                 display_grid()
                 possible_victories(grid)
-                is_full(grid)
 
 
 def display_grid():
@@ -65,12 +59,8 @@ def replace_grid(player, sign):
 
 
 def possible_victories(grid):
-    #evaluate possible victories and return if applicable 
-    return grid[0] == grid[1] == grid[2] or grid[3] == grid[4] == grid[5] or grid[6] == grid[7] == grid[8] or grid[0] == grid[3] == grid[6] or grid[1] == grid[4] == grid[7] or grid[2] == grid[5] == grid[8] or grid[0] == grid[4] == grid[8] or grid[2] == grid[4] == grid[6]
-
-def is_full(grid):
-    #verify if the grid is full
-    return (grid[0] == 'x' or grid[0] == 'o') and (grid[1] == 'x' or grid[1] == 'o') and (grid[2] == 'x' or grid[2] == 'o') and (grid[3] == 'x' or grid[3] == 'o') and (grid[4] == 'x' or grid[4] == 'o') and (grid[5] == 'x' or grid[5] == 'o') and (grid[6] == 'x' or grid[6] == 'o') and (grid[7] == 'x' or grid[7] == 'o') and (grid[8] == 'x' or grid[8] == 'o')
+    #evaluate possible victories or if is full and return if applicable 
+    return grid[0] == grid[1] == grid[2] or grid[3] == grid[4] == grid[5] or grid[6] == grid[7] == grid[8] or grid[0] == grid[3] == grid[6] or grid[1] == grid[4] == grid[7] or grid[2] == grid[5] == grid[8] or grid[0] == grid[4] == grid[8] or grid[2] == grid[4] == grid[6] or ((grid[0] == 'x' or grid[0] == 'o') and (grid[1] == 'x' or grid[1] == 'o') and (grid[2] == 'x' or grid[2] == 'o') and (grid[3] == 'x' or grid[3] == 'o') and (grid[4] == 'x' or grid[4] == 'o') and (grid[5] == 'x' or grid[5] == 'o') and (grid[6] == 'x' or grid[6] == 'o') and (grid[7] == 'x' or grid[7] == 'o') and (grid[8] == 'x' or grid[8] == 'o'))
 
 
 if __name__ == "__main__":
